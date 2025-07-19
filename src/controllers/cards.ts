@@ -3,7 +3,7 @@ import { RequestWithUser } from '../types/index';
 import Card from '../models/card';
 
 // Получение всех карточек
-export const getAllCards = async (req: Request, res: Response) => {
+export const getCards = async (req: Request, res: Response) => {
   try {
     const allCards = await Card.find({});
     res.status(200).send(allCards);
@@ -13,7 +13,7 @@ export const getAllCards = async (req: Request, res: Response) => {
 };
 
 // Создание карточки
-export const addCard = async (req: Request, res: Response) => {
+export const createCard = async (req: Request, res: Response) => {
   try {
     const { name, link } = req.body;
     const newCard = await Card.create({ name, link, owner: (req as RequestWithUser).user._id });
@@ -27,7 +27,7 @@ export const addCard = async (req: Request, res: Response) => {
 };
 
 // Удаление карточки
-export const removeCard = async (req: Request, res: Response) => {
+export const deleteCard = async (req: Request, res: Response) => {
   try {
     const { cardId } = req.params;
     const deletedCard = await Card.findByIdAndDelete(cardId);

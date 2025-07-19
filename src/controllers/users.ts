@@ -3,7 +3,7 @@ import User from '../models/user';
 import { RequestWithUser } from '../types/index';
 
 // Получение всех пользователей
-export const getAllUsers = async (req: Request, res: Response) => {
+export const getUsers = async (req: Request, res: Response) => {
   try {
     const usersList = await User.find({});
     res.status(200).send(usersList);
